@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vit Lai | Design Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --sub-text: #707070;
+            --border: #ececec;
+            --accent-bg: #f9f9f9;
+            --ease: cubic-bezier(0.2, 1, 0.2, 1);
+            --transition: all 0.7s var(--ease);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; font-weight: 500; }
+
+        /* 導航系統 */
+        header {
+            position: fixed; top: 0; left: 0; width: 280px; height: 100vh;
+            padding: 60px 45px; border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; z-index: 1000; background: white;
+            transition: var(--transition);
+        }
+
+        .logo { font-size: 1.5rem; cursor: pointer; letter-spacing: -0.5px; margin-bottom: 80px; }
+        nav ul { list-style: none; }
+        nav ul li { margin-bottom: 25px; }
+        nav ul li a { 
+            text-decoration: none; color: var(--sub-text); font-size: 0.9rem; 
+            letter-spacing: 1px; transition: var(--transition); display: block;
+        }
+        nav ul li a:hover, nav ul li a.active { color: var(--text); transform: translateX(8px); }
+
+        .menu-toggle { display: none; position: fixed; top: 25px; right: 25px; z-index: 2000; cursor: pointer; font-size: 0.8rem; letter-spacing: 2px; background: white; padding: 10px; border: 1px solid var(--border); }
+
+        /* 主內容 */
+        main { margin-left: 280px; width: calc(100% - 280px); transition: var(--transition); }
+        .page-content { padding: 120px 10%; opacity: 0; transform: translateY(30px); display: none; transition: var(--transition); }
+        .page-content.active { display: block; opacity: 1; transform: translateY(0); }
+
+        /* 通用 Layout */
+        .cv-row { display: grid; grid-template-columns: 150px 1fr; gap: 40px; margin-bottom: 40px; padding: 40px 0; border-top: 1px solid var(--border); }
+        .cv-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #aaa; padding-top: 10px; }
+        /* Contact 按鈕 Hover 效果 */
+            .btn-primary:hover {
+                background: #333 !important; /* 稍微變淺一點的黑色 */
+                color: #fff !important;
+                transform: translateY(-2px); /* 輕微上浮感 */
+            }
+
+            .btn-secondary:hover {
+                background: #000 !important;
+                color: #fff !important;
+                transform: translateY(-2px);
+            }
+
+            /* 確保 LinkedIn 圖標在背景變黑時也變色 */
+            .btn-secondary:hover img {
+                filter: invert(1); /* 將黑色圖標反轉為白色 */
+            }
+        /* Hover 效果 */
+        .hover-zone {
+            padding: 40px;
+            margin: -40px;
+            border-radius: 4px;
+            transition: background 0.5s var(--ease);
+        }
+        .hover-zone:hover {
+            background: #fafafa;
+        }
+
+        .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 40px; letter-spacing: -2px; }
+
+        /* Work 列表 */
+        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; }
+        .work-card { text-decoration: none; color: inherit; cursor: pointer; }
+        .img-wrap { width: 100%; aspect-ratio: 10/12; background: #f9f9f9; overflow: hidden; margin-bottom: 20px; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); filter: grayscale(100%); }
+        .work-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
+
+        /* 手機端自適應 */
+        @media (max-width: 900px) {
+            header { width: 100%; height: 100vh; left: -100%; justify-content: center; align-items: center; text-align: center; }
+            header.open { left: 0; }
+            .menu-toggle { display: block; }
+            main { margin-left: 0; width: 100%; }
+            .page-content { padding: 100px 30px; }
+            .work-grid, .cv-row { grid-template-columns: 1fr; }
+            .hover-zone { padding: 20px; margin: -20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleMenu()">MENU</div>
+
+    <header id="side-nav">
+        <div class="logo" onclick="showPage('about'); toggleMenu();">VIT LAI.</div>
+        <nav>
+            <ul>
+                <li><a href="javascript:void(0)" onclick="showPage('about'); toggleMenu();" id="link-about" class="active">About</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('portfolio'); toggleMenu();" id="link-portfolio">Work</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('contact'); toggleMenu();" id="link-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="about" class="page-content active">
+            <section class="hero-flex" style="display: flex; gap: 80px; align-items: flex-start; margin-bottom: 100px;">
+                <div style="flex: 1.5;">
+                    <h1 class="hero-title">Thinking Strategy,<br>Designing Transformation.</h1>
+                    <p style="font-size: 1.25rem; color: #555; max-width: 800px; font-weight: 300; line-height: 1.8; letter-spacing: 0.2px;">
+                        I am <span style="font-weight: 600; color: #000;">Vit Lai</span>, a <strong>Senior UED Director</strong> and <strong>Design Strategist</strong> with over 15 years of expertise. 
+                        I specialize in driving <strong>Enterprise Digitalization</strong> through <strong>Design Thinking</strong>—transforming complex business requirements into high-impact, user-centric product experiences.
+                    </p>
+                </div>
+                <div style="flex: 1; aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; background: #f0f0f0;">
+                    <img src="images/vitlai-01.jpg" alt="Vit Lai Portrait" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+            </section>
+
+            <div class="cv-row">
+                <div class="cv-label">Professional Expertise</div>
+                <div class="cv-content hover-zone">
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 60px;">
+                        <div style="position: absolute; left: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://img.icons8.com/ios/50/000000/strategy-board.png" style="width: 24px; height: 24px; opacity: 0.8;">
+                        </div>
+                        <div style="position: absolute; left: 19px; top: 40px; bottom: -40px; border-left: 1px solid #f0f0f0;"></div>
+                        <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 12px;">Strategic Leadership</h4>
+                        <p style="font-size: 1.05rem; color: #555; line-height: 1.8;">I drive Digital Transformation by aligning business strategy with user-centric design.</p>
+                    </div>
+
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 60px;">
+                        <div style="position: absolute; left: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://img.icons8.com/ios/50/000000/workflow.png" style="width: 24px; height: 24px; opacity: 0.8;">
+                        </div>
+                        <div style="position: absolute; left: 19px; top: 40px; bottom: -40px; border-left: 1px solid #f0f0f0;"></div>
+                        <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 12px;">Design Methodology</h4>
+                        <p style="font-size: 1.05rem; color: #555; line-height: 1.8;">Expertise in Design Thinking workshops and implementing Agile & Scrum practices.</p>
+                    </div>
+
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 60px;">
+                        <div style="position: absolute; left: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://img.icons8.com/ios/50/000000/prototype.png" style="width: 24px; height: 24px; opacity: 0.8;">
+                        </div>
+                        <h4 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 12px;">Product Execution</h4>
+                        <p style="font-size: 1.05rem; color: #555; line-height: 1.8;">Advanced Product Design, scalable Design Systems, and comprehensive UX Research.</p>
+                    </div>
+
+                    <div style="padding-left: 60px; margin-top: 20px;">
+                        <h4 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #bbb; margin-bottom: 20px;">Technical Skills & Tools</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <span style="padding: 6px 14px; border: 1px solid #eee; font-size: 0.8rem; color: #666; border-radius: 2px;">Design Thinking</span>
+                            <span style="padding: 6px 14px; border: 1px solid #eee; font-size: 0.8rem; color: #666; border-radius: 2px;">UI/UX Design</span>
+                            <span style="padding: 6px 14px; border: 1px solid #eee; font-size: 0.8rem; color: #666; border-radius: 2px;">Figma / Sketch</span>
+                            <span style="padding: 6px 14px; border: 1px solid #eee; font-size: 0.8rem; color: #666; border-radius: 2px;">Design Systems</span>
+                            <span style="padding: 6px 14px; border: 1px solid #eee; font-size: 0.8rem; color: #666; border-radius: 2px;">Agile / Scrum</span>
+                            <span style="padding: 6px 14px; border: 1px solid #eee; font-size: 0.8rem; color: #666; border-radius: 2px;">Service Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-row">
+            <div class="cv-label">Experience</div>
+                <div class="cv-content hover-zone" style="border-left: 2px solid #f0f0f0; padding-left: 40px; margin-left: 10px;">
+                    
+                    <div style="position: relative; margin-bottom: 60px;">
+                    <div style="position: absolute; left: -46px; top: 10px; width: 10px; height: 10px; background: #000; border-radius: 50%;"></div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Zixel Technology Co.</h3>
+                    <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #000;">Sr. UED Director / Project Delivery Director | 2019.12 — 2022.08</p>
+                    <p style="color: #666; font-size: 0.95rem; max-width: 700px; line-height: 1.7; margin-bottom: 15px;">
+                        Spearheaded manufacturing digital transformation projects, overseeing end-to-end resource management and delivery quality. Successfully led the deployment of data production platforms across 10 extensional production lines, integrating IoT, edge computing, and 5G technologies.
+                    </p>
+                    <ul style="color: #777; font-size: 0.9rem; padding-left: 18px; line-height: 1.8;">
+                        <li>Managed internal product interaction and interface design systems, ensuring rapid iteration based on unified design specs.</li>
+                        <li>Facilitated strategic client communications to translate complex business requirements into actionable product roadmaps.</li>
+                    </ul>
+                </div>
+
+                <div style="position: relative; margin-bottom: 60px;">
+                    <div style="position: absolute; left: -46px; top: 10px; width: 10px; height: 10px; background: #ccc; border-radius: 50%;"></div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 5px;">IBM</h3>
+                    <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #000;">Sr. UX/UI Design Consultant | 2017.10 — 2019.07</p>
+                    <p style="color: #666; font-size: 0.95rem; max-width: 700px; line-height: 1.7; margin-bottom: 15px;">
+                        Facilitated Design Thinking workshops to uncover innovative opportunities for enterprise clients. Developed service blueprints, customer journey maps, and low-fidelity prototypes to visualize and validate strategic ideas.
+                    </p>
+                    <ul style="color: #777; font-size: 0.9rem; padding-left: 18px; line-height: 1.8;">
+                        <li>Managed SCRUM ceremonies, including sprint planning and retrospectives, ensuring high-quality project delivery.</li>
+                        <li>Designed an Elderly Healthcare Ecosystem MVP, achieving a 5% growth in App user acquisition.</li>
+                    </ul>
+                </div>
+
+                <div style="position: relative; margin-bottom: 60px;">
+                    <div style="position: absolute; left: -46px; top: 10px; width: 10px; height: 10px; background: #ccc; border-radius: 50%;"></div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Kyligence</h3>
+                    <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #000;">Sr. UED Manager | 2017.10 — 2019.07</p>
+                    <p style="color: #666; font-size: 0.95rem; max-width: 700px; line-height: 1.7; margin-bottom: 15px;">
+                        Led UI/UX design and established design guidelines for big data acceleration and cloud management platforms. Executed comprehensive user research that improved task completion rates by 22% and reduced task time by 15%.
+                    </p>
+                    <ul style="color: #777; font-size: 0.9rem; padding-left: 18px; line-height: 1.8;">
+                        <li>Redefined the design system and data visualization language, integrating new branding elements for next-generation enterprise products.</li>
+                        <li>Conducted extensive field research and co-creation sessions to align complex technical requirements with intuitive user mental models.</li>
+                    </ul>
+                </div>
+
+                <div style="position: relative; margin-bottom: 60px;">
+                    <div style="position: absolute; left: -46px; top: 10px; width: 10px; height: 10px; background: #ccc; border-radius: 50%;"></div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Linkedcare</h3>
+                    <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #000;">Sr. UED Manager | 2015.09 — 2017.10</p>
+                    <p style="color: #666; font-size: 0.95rem; max-width: 700px; line-height: 1.7; margin-bottom: 15px;">
+                        Oversaw UED team management and 0-to-1 product development for dental and cosmetic SaaS platforms. Increased System Usability Scale (SUS) grades by 12.5% and reduced customer attrition by 10%.
+                    </p>
+                    <ul style="color: #777; font-size: 0.9rem; padding-left: 18px; line-height: 1.8;">
+                        <li>Developed long-term UCD (User-Centered Design) plans and defined workflows for diverse user personas across iOS, Android, and Web platforms.</li>
+                        <li>Led cross-functional collaboration with engineering teams using high-fidelity prototypes to ensure precise implementation of clinical and business requirements.</li>
+                    </ul>
+                </div>
+
+                    <div style="position: relative; margin-bottom: 60px;">
+                        <div style="position: absolute; left: -46px; top: 10px; width: 10px; height: 10px; background: #ccc; border-radius: 50%;"></div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Mozilla Taiwan</h3>
+                        <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #000;">Sr. UX/UI Designer | 2012.11 — 2015.06</p>
+                        <p style="color: #666; font-size: 0.95rem; max-width: 700px; line-height: 1.7; margin-bottom: 15px;">
+                            Designed the new UI for Firefox mobile and TV OS while localizing the browser to improve NPS in the Taiwan market.
+                        </p>
+                        <ul style="color: #777; font-size: 0.9rem; padding-left: 18px; line-height: 1.8;">
+                            <li>Maintained the Firefox news portal and high-traffic event websites.</li>
+                            <li>Collaborated on cross-platform OS design languages.</li>
+                        </ul>
+                    </div>
+
+                    <div style="position: relative; margin-bottom: 60px;">
+                        <div style="position: absolute; left: -46px; top: 10px; width: 10px; height: 10px; background: #ccc; border-radius: 50%;"></div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Bobii Creative</h3>
+                        <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #000;">Sr. Web Designer | 2009.10 — 2012.10</p>
+                        <p style="color: #666; font-size: 0.95rem; max-width: 700px; line-height: 1.7; margin-bottom: 15px;">
+                            Proposed creative solutions for official website and app projects through wireframes, mockups, and conceptual storytelling.
+                        </p>
+                        <ul style="color: #777; font-size: 0.9rem; padding-left: 18px; line-height: 1.8;">
+                            <li>Developed features aligned with user feedback and performed HTML/CSS front-end coding.</li>
+                            <li>Strategic alignment of product functionality with user needs.</li>
+                        </ul>
+                    </div>
+
+                    <div style="position: relative;">
+                        <div style="position: absolute; left: -46px; top: 10px; width: 10px; height: 10px; background: #ccc; border-radius: 50%;"></div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 5px;">USee Advertising</h3>
+                        <p style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; color: #000;">Graphic Designer | 2005.04 — 2009.09</p>
+                        <p style="color: #666; font-size: 0.95rem; max-width: 700px; line-height: 1.7; margin-bottom: 15px;">
+                            Led branding and CIS design system development, including key visuals and exhibition design for business forums.
+                        </p>
+                        <ul style="color: #777; font-size: 0.9rem; padding-left: 18px; line-height: 1.8;">
+                            <li>Designed monthly magazines and advertisements tailored for the hi-tech industry.</li>
+                            <li>Managed client graphic proposals and effectively communicated design requirements.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="cv-row">
+            <div class="cv-label">Honors & Awards</div>
+                <div class="cv-content hover-zone">
+                    
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 50px;">
+                        <div style="position: absolute; left: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://img.icons8.com/ios/50/000000/trophy.png" style="width: 24px; height: 24px; opacity: 0.8;">
+                        </div>
+                        <div style="position: absolute; left: 19px; top: 40px; bottom: -50px; border-left: 1px solid #f0f0f0;"></div>
+                        <span style="font-size: 0.75rem; color: #bbb; letter-spacing: 1px; font-weight: 600;">2021</span>
+                        <h3 style="font-size: 1.4rem; margin: 5px 0; color: #000;">Champion of CDSS HCI Innovation</h3>
+                        <p style="font-size: 0.95rem; color: #777;">Chinese Medical Association (CMA) — Healthcare Interaction Design Excellence</p>
+                    </div>
+
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 50px;">
+                        <div style="position: absolute; left: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://img.icons8.com/ios/50/000000/medal.png" style="width: 24px; height: 24px; opacity: 0.8;">
+                        </div>
+                        <div style="position: absolute; left: 19px; top: 40px; bottom: -50px; border-left: 1px solid #f0f0f0;"></div>
+                        <span style="font-size: 0.75rem; color: #bbb; letter-spacing: 1px; font-weight: 600;">2020</span>
+                        <h3 style="font-size: 1.4rem; margin: 5px 0; color: #000;">IBM OTAA</h3>
+                        <p style="font-size: 0.95rem; color: #777;">Outstanding Technical Achievement Award — Strategic Consulting & Delivery</p>
+                    </div>
+
+                    <div style="position: relative; padding-left: 60px; margin-bottom: 50px;">
+                        <div style="position: absolute; left: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://img.icons8.com/ios/50/000000/cloud.png" style="width: 24px; height: 24px; opacity: 0.8;">
+                        </div>
+                        <div style="position: absolute; left: 19px; top: 40px; bottom: -50px; border-left: 1px solid #f0f0f0;"></div>
+                        <span style="font-size: 0.75rem; color: #bbb; letter-spacing: 1px; font-weight: 600;">2018</span>
+                        <h3 style="font-size: 1.4rem; margin: 5px 0; color: #000;">Cloud Cluster Development UI Design</h3>
+                        <p style="font-size: 0.95rem; color: #777;">Excellence in Cloud Infrastructure Interface Design (CN)</p>
+                    </div>
+
+                    <div style="position: relative; padding-left: 60px;">
+                        <div style="position: absolute; left: 0; top: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://img.icons8.com/ios/50/000000/star.png" style="width: 24px; height: 24px; opacity: 0.8;">
+                        </div>
+                        <span style="font-size: 0.75rem; color: #bbb; letter-spacing: 1px; font-weight: 600;">2010</span>
+                        <h3 style="font-size: 1.4rem; margin: 5px 0; color: #000;">11th Golden Click Awards </h3>
+                        <p style="font-size: 0.95rem; color: #777; margin-bottom: 5px;">Best Official Web Site — Best Web Service Category</p>
+                        <ul style="font-size: 0.85rem; color: #888; padding-left: 0; list-style: none; line-height: 1.6;">
+                            <li>• Best Web Service in Best Creative Service Category</li>
+                            <li>• Best Web Service in Best Public Service Category</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        <div id="portfolio" class="page-content">
+            <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Selected Works</h2>
+            <div class="work-grid">
+                <div class="work-card" onclick="openProject('healthcare')">
+                    <div class="img-wrap"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800"></div>
+                    <h3>Healthcare Ecosystem</h3>
+                    <p style="font-size: 0.75rem; color:#aaa; text-transform:uppercase;">Service Design</p>
+                </div>
+                <div class="work-card">
+                    <div class="img-wrap"><img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800"></div>
+                    <h3>SaaS Platform</h3>
+                    <p style="font-size: 0.75rem; color:#aaa; text-transform:uppercase;">UX Strategy</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="page-content">
+            <div style="display:flex; gap:60px; align-items:center;">
+                <div style="flex:1; aspect-ratio:3/4; overflow:hidden; border-radius: 4px;">
+                    <img src="images/vitlai-01.jpg" alt="Vit Lai" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+                
+                <div style="flex:1.2;">
+                    <h2 style="font-size: 3rem; line-height: 1.1; margin-bottom: 20px;">Ready to start <br>the journey?</h2>
+                    <p style="margin-bottom: 40px; color: #777; font-size: 1.1rem; font-weight: 300;">
+                        Feel free to reach out for consulting services or project collaborations. <br>
+                        You can also connect with me via LinkedIn.
+                    </p>
+                    
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="mailto:dkope2001@qq.com" class="btn-primary" style="padding: 15px 35px; border: 1px solid #000; border-radius: 50px; text-decoration:none; color:#fff; background: #000; display:flex; align-items: center; gap: 10px; font-size: 0.9rem; transition: var(--transition); font-weight: 500;">
+                            <span>Send an Email</span>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/vitlai" target="_blank" class="btn-secondary" style="padding: 15px 35px; border: 1px solid #000; border-radius: 50px; text-decoration:none; color:#000; background: transparent; display:flex; align-items: center; gap: 10px; font-size: 0.9rem; transition: var(--transition); font-weight: 500;">
+                            <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" style="width: 18px; height: 18px; transition: filter 0.3s ease;" alt="LinkedIn Icon">
+                            <span>LinkedIn Profile</span>
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <p style="font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
+                            Phone: +86-1575 080 2902 / WeChat: vitlai1121
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </main>
+
+    <div id="modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:3000; display:none; overflow-y:auto; padding:80px 10%;">
+        <div style="position:fixed; top:30px; right:30px; cursor:pointer; font-size:0.75rem; letter-spacing:2px;" onclick="closeProject()">CLOSE —</div>
+        <div id="modal-content"></div>
+    </div>
+
+    <script>
+        function toggleMenu() { if (window.innerWidth <= 900) document.getElementById('side-nav').classList.toggle('open'); }
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(p => { p.classList.remove('active'); p.style.display='none'; });
+            const target = document.getElementById(pageId);
+            target.style.display = 'block';
+            setTimeout(() => target.classList.add('active'), 50);
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            document.getElementById('link-' + pageId).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        function openProject(id) {
+            document.getElementById('modal-content').innerHTML = `<h1 style="font-size: 3rem;">Healthcare Ecosystem</h1><p style="margin-top:20px; color:#666; line-height:1.8;">這是一個關於老齡化醫療生態系的服務設計專案...</p>`;
+            document.getElementById('modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeProject() { document.getElementById('modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    </script>
+</body>
+</html>
