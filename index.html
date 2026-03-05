@@ -13,11 +13,11 @@
             --border: #ececec;
             --accent-bg: #f9f9f9;
             --ease: cubic-bezier(0.2, 1, 0.2, 1);
-            --transition: all 0.7s var(--ease);
+            --transition: all 0.6s var(--ease);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
         h1, h2, h3, .logo { font-family: 'Playfair Display', serif; font-weight: 500; }
 
@@ -36,64 +36,57 @@
             text-decoration: none; color: var(--sub-text); font-size: 0.9rem; 
             letter-spacing: 1px; transition: var(--transition); display: block;
         }
-        nav ul li a:hover, nav ul li a.active { color: var(--text); transform: translateX(8px); }
+        nav ul li a:hover, nav ul li a.active { color: var(--text); transform: translateX(8px); font-weight: 600; }
 
         .menu-toggle { display: none; position: fixed; top: 25px; right: 25px; z-index: 2000; cursor: pointer; font-size: 0.8rem; letter-spacing: 2px; background: white; padding: 10px; border: 1px solid var(--border); }
 
-        /* 主內容 */
-        main { margin-left: 280px; width: calc(100% - 280px); transition: var(--transition); }
-        .page-content { padding: 120px 10%; opacity: 0; transform: translateY(30px); display: none; transition: var(--transition); }
-        .page-content.active { display: block; opacity: 1; transform: translateY(0); }
+        /* 主內容修復：移除 absolute，改用簡單的隱藏顯示邏輯 */
+        main { margin-left: 280px; width: calc(100% - 280px); min-height: 100vh; position: relative; }
+        
+        .page-content { 
+            padding: 120px 10%; 
+            width: 100%;
+            display: none; /* 預設全部隱藏 */
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .page-content.active { 
+            display: block; /* 只有 active 時顯示 */
+            opacity: 1; 
+            transform: translateY(0); 
+        }
 
-        /* 通用 Layout */
-        .cv-row { display: grid; grid-template-columns: 150px 1fr; gap: 40px; margin-bottom: 40px; padding: 40px 0; border-top: 1px solid var(--border); }
+        /* CV 佈局 */
+        .cv-row { display: grid; grid-template-columns: 150px 1fr; gap: 40px; margin-bottom: 0; padding: 60px 0; border-top: 1px solid var(--border); }
         .cv-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #aaa; padding-top: 10px; }
-        /* Contact 按鈕 Hover 效果 */
-            .btn-primary:hover {
-                background: #333 !important; /* 稍微變淺一點的黑色 */
-                color: #fff !important;
-                transform: translateY(-2px); /* 輕微上浮感 */
-            }
+        
+        .hover-zone { padding: 40px; margin: -40px; border-radius: 8px; transition: background 0.4s ease; }
+        .hover-zone:hover { background: #fafafa; }
 
-            .btn-secondary:hover {
-                background: #000 !important;
-                color: #fff !important;
-                transform: translateY(-2px);
-            }
+        .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 40px; letter-spacing: -1px; }
 
-            /* 確保 LinkedIn 圖標在背景變黑時也變色 */
-            .btn-secondary:hover img {
-                filter: invert(1); /* 將黑色圖標反轉為白色 */
-            }
-        /* Hover 效果 */
-        .hover-zone {
-            padding: 40px;
-            margin: -40px;
-            border-radius: 4px;
-            transition: background 0.5s var(--ease);
-        }
-        .hover-zone:hover {
-            background: #fafafa;
-        }
-
-        .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 40px; letter-spacing: -2px; }
-
-        /* Work 列表 */
-        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; }
-        .work-card { text-decoration: none; color: inherit; cursor: pointer; }
-        .img-wrap { width: 100%; aspect-ratio: 10/12; background: #f9f9f9; overflow: hidden; margin-bottom: 20px; }
+        /* 工作列表 */
+        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .work-card { text-decoration: none; color: inherit; cursor: pointer; margin-bottom: 30px; }
+        .img-wrap { width: 100%; aspect-ratio: 16/10; background: #f9f9f9; overflow: hidden; margin-bottom: 20px; border-radius: 4px; }
         .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); filter: grayscale(100%); }
         .work-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
 
-        /* 手機端自適應 */
+        /* 建議與學歷樣式 */
+        .edu-item { margin-bottom: 25px; }
+        .edu-item h4 { font-size: 1.1rem; color: #000; }
+        .edu-item p { color: #888; font-size: 0.9rem; }
+
         @media (max-width: 900px) {
             header { width: 100%; height: 100vh; left: -100%; justify-content: center; align-items: center; text-align: center; }
             header.open { left: 0; }
             .menu-toggle { display: block; }
             main { margin-left: 0; width: 100%; }
-            .page-content { padding: 100px 30px; }
-            .work-grid, .cv-row { grid-template-columns: 1fr; }
-            .hover-zone { padding: 20px; margin: -20px; }
+            .page-content { padding: 80px 25px; }
+            .cv-row { grid-template-columns: 1fr; gap: 20px; }
+            .work-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -102,12 +95,12 @@
     <div class="menu-toggle" onclick="toggleMenu()">MENU</div>
 
     <header id="side-nav">
-        <div class="logo" onclick="showPage('about'); toggleMenu();">VIT LAI.</div>
+        <div class="logo" onclick="showPage('about');">VIT LAI.</div>
         <nav>
             <ul>
-                <li><a href="javascript:void(0)" onclick="showPage('about'); toggleMenu();" id="link-about" class="active">About</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('portfolio'); toggleMenu();" id="link-portfolio">Work</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('contact'); toggleMenu();" id="link-contact">Contact</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('about');" id="link-about" class="active">About</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('portfolio');" id="link-portfolio">Work</a></li>
+                <li><a href="javascript:void(0)" onclick="showPage('contact');" id="link-contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -317,6 +310,7 @@
 
                 </div>
             </div>
+        </div>
 
         <div id="portfolio" class="page-content">
             <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Selected Works</h2>
@@ -335,39 +329,26 @@
         </div>
 
         <div id="contact" class="page-content">
-            <div style="display:flex; gap:60px; align-items:center;">
-                <div style="flex:1; aspect-ratio:3/4; overflow:hidden; border-radius: 4px;">
+            <div style="display:flex; gap:60px; align-items:center; flex-wrap: wrap;">
+                <div style="flex:1; min-width: 300px; aspect-ratio:3/4; overflow:hidden; border-radius: 4px;">
                     <img src="images/vitlai-01.jpg" alt="Vit Lai" style="width:100%; height:100%; object-fit:cover; display:block;">
                 </div>
-                
-                <div style="flex:1.2;">
+                <div style="flex:1.2; min-width: 300px;">
                     <h2 style="font-size: 3rem; line-height: 1.1; margin-bottom: 20px;">Ready to start <br>the journey?</h2>
                     <p style="margin-bottom: 40px; color: #777; font-size: 1.1rem; font-weight: 300;">
                         Feel free to reach out for consulting services or project collaborations. <br>
                         You can also connect with me via LinkedIn.
                     </p>
-                    
                     <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="mailto:dkope2001@qq.com" class="btn-primary" style="padding: 15px 35px; border: 1px solid #000; border-radius: 50px; text-decoration:none; color:#fff; background: #000; display:flex; align-items: center; gap: 10px; font-size: 0.9rem; transition: var(--transition); font-weight: 500;">
-                            <span>Send an Email</span>
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/vitlai" target="_blank" class="btn-secondary" style="padding: 15px 35px; border: 1px solid #000; border-radius: 50px; text-decoration:none; color:#000; background: transparent; display:flex; align-items: center; gap: 10px; font-size: 0.9rem; transition: var(--transition); font-weight: 500;">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" style="width: 18px; height: 18px; transition: filter 0.3s ease;" alt="LinkedIn Icon">
+                        <a href="mailto:dkope2001@qq.com" class="btn btn-primary">Send an Email</a>
+                        <a href="https://www.linkedin.com/in/vitlai" target="_blank" class="btn btn-secondary">
+                            <img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" style="width: 18px;">
                             <span>LinkedIn Profile</span>
                         </a>
-                    </div>
-
-                    <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px;">
-                        <p style="font-size: 0.8rem; color: #aaa; letter-spacing: 1px;">
-                            Phone: +86-1575 080 2902 / WeChat: vitlai1121
-                        </p>
                     </div>
                 </div>
             </div>
         </div>
-
-        
     </main>
 
     <div id="modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:3000; display:none; overflow-y:auto; padding:80px 10%;">
@@ -376,17 +357,41 @@
     </div>
 
     <script>
-        function toggleMenu() { if (window.innerWidth <= 900) document.getElementById('side-nav').classList.toggle('open'); }
+        function toggleMenu() { 
+            if (window.innerWidth <= 900) document.getElementById('side-nav').classList.toggle('open'); 
+        }
+
         function showPage(pageId) {
+            // 1. 隱藏所有頁面並移除 active
             const pages = document.querySelectorAll('.page-content');
-            pages.forEach(p => { p.classList.remove('active'); p.style.display='none'; });
+            pages.forEach(p => { 
+                p.classList.remove('active'); 
+                p.style.display = 'none'; 
+            });
+
+            // 2. 顯示目標頁面
             const target = document.getElementById(pageId);
-            target.style.display = 'block';
-            setTimeout(() => target.classList.add('active'), 50);
+            if (target) {
+                target.style.display = 'block';
+                // 使用 setTimeout 確保 display: block 渲染後才觸發 opacity 動畫
+                setTimeout(() => {
+                    target.classList.add('active');
+                }, 10);
+            }
+
+            // 3. 更新導航樣式
             document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-            document.getElementById('link-' + pageId).classList.add('active');
+            const activeLink = document.getElementById('link-' + pageId);
+            if (activeLink) activeLink.classList.add('active');
+
+            // 4. 手機版點擊後自動收起選單
+            if (window.innerWidth <= 900) {
+                document.getElementById('side-nav').classList.remove('open');
+            }
+
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
+
         function openProject(id) {
             document.getElementById('modal-content').innerHTML = `<h1 style="font-size: 3rem;">Healthcare Ecosystem</h1><p style="margin-top:20px; color:#666; line-height:1.8;">這是一個關於老齡化醫療生態系的服務設計專案...</p>`;
             document.getElementById('modal').style.display = 'block';
