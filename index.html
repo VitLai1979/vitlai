@@ -5,153 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vit Lai | Design Strategy</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --sub-text: #707070;
-            --border: #ececec;
-            --accent-bg: #f9f9f9;
-            --ease: cubic-bezier(0.2, 1, 0.2, 1);
-            --transition: all 0.6s var(--ease);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-
-        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; font-weight: 500; }
-        /* --- 按鈕基礎樣式 --- */
-        .btn {
-            padding: 14px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-
-        /* 主要按鈕 (黑色背景) */
-        .btn-primary {
-            background: #1a1a1a;
-            color: #ffffff;
-            border-color: #1a1a1a;
-        }
-
-        .btn-primary:hover {
-            background: #404040;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .btn-primary img {
-            filter: brightness(0) invert(1); /* 讓圖標變白色 */
-        }
-
-        /* 次要按鈕 (透明背景/黑框) */
-        .btn-secondary {
-            background: transparent;
-            color: #1a1a1a;
-            border-color: #1a1a1a;
-        }
-
-        .btn-secondary:hover {
-            background: #1a1a1a;
-            color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .btn-secondary:hover img {
-            filter: brightness(0) invert(1); /* 懸停時圖標變白色 */
-        }
-
-        /* 圖標微調 */
-        .btn img {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .btn:hover img {
-            transform: scale(1.1);
-        }
-
-        /* 導航系統 */
-        header {
-            position: fixed; top: 0; left: 0; width: 280px; height: 100vh;
-            padding: 60px 45px; border-right: 1px solid var(--border);
-            display: flex; flex-direction: column; z-index: 1000; background: white;
-            transition: var(--transition);
-        }
-
-        .logo { font-size: 1.5rem; cursor: pointer; letter-spacing: -0.5px; margin-bottom: 80px; }
-        nav ul { list-style: none; }
-        nav ul li { margin-bottom: 25px; }
-        nav ul li a { 
-            text-decoration: none; color: var(--sub-text); font-size: 0.9rem; 
-            letter-spacing: 1px; transition: var(--transition); display: block;
-        }
-        nav ul li a:hover, nav ul li a.active { color: var(--text); transform: translateX(8px); font-weight: 600; }
-
-        .menu-toggle { display: none; position: fixed; top: 25px; right: 25px; z-index: 2000; cursor: pointer; font-size: 0.8rem; letter-spacing: 2px; background: white; padding: 10px; border: 1px solid var(--border); }
-
-        /* 主內容修復：移除 absolute，改用簡單的隱藏顯示邏輯 */
-        main { margin-left: 280px; width: calc(100% - 280px); min-height: 100vh; position: relative; }
-        
-        .page-content { 
-            padding: 120px 10%; 
-            width: 100%;
-            display: none; /* 預設全部隱藏 */
-            opacity: 0; 
-            transform: translateY(20px); 
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        
-        .page-content.active { 
-            display: block; /* 只有 active 時顯示 */
-            opacity: 1; 
-            transform: translateY(0); 
-        }
-
-        /* CV 佈局 */
-        .cv-row { display: grid; grid-template-columns: 150px 1fr; gap: 40px; margin-bottom: 0; padding: 60px 0; border-top: 1px solid var(--border); }
-        .cv-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #aaa; padding-top: 10px; }
-        
-        .hover-zone { padding: 40px; margin: -40px; border-radius: 8px; transition: background 0.4s ease; }
-        .hover-zone:hover { background: #fafafa; }
-
-        .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 40px; letter-spacing: -1px; }
-
-        /* 工作列表 */
-        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-        .work-card { text-decoration: none; color: inherit; cursor: pointer; margin-bottom: 30px; }
-        .img-wrap { width: 100%; aspect-ratio: 16/10; background: #f9f9f9; overflow: hidden; margin-bottom: 20px; border-radius: 4px; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); filter: grayscale(100%); }
-        .work-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
-
-        /* 建議與學歷樣式 */
-        .edu-item { margin-bottom: 25px; }
-        .edu-item h4 { font-size: 1.1rem; color: #000; }
-        .edu-item p { color: #888; font-size: 0.9rem; }
-
-        @media (max-width: 900px) {
-            header { width: 100%; height: 100vh; left: -100%; justify-content: center; align-items: center; text-align: center; }
-            header.open { left: 0; }
-            .menu-toggle { display: block; }
-            main { margin-left: 0; width: 100%; }
-            .page-content { padding: 80px 25px; }
-            .cv-row { grid-template-columns: 1fr; gap: 20px; }
-            .work-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <div class="menu-toggle" onclick="toggleMenu()">MENU</div>
@@ -169,16 +25,16 @@
 
     <main>
         <div id="about" class="page-content active">
-            <section class="hero-flex" style="display: flex; gap: 80px; align-items: flex-start; margin-bottom: 100px;">
-                <div style="flex: 1.5;">
-                    <h1 class="hero-title">Thinking Strategy,<br>Designing Transformation.</h1>
-                    <p style="font-size: 1.25rem; color: #555; max-width: 800px; font-weight: 300; line-height: 1.8; letter-spacing: 0.2px;">
-                        I am <span style="font-weight: 600; color: #000;">Vit Lai</span>, a <strong>Senior UED Director</strong> and <strong>Design Strategist</strong> with over 15 years of expertise. 
+            <section class="hero-flex">
+                <div class="hero-content">
+                    <h1 class="hero-title">Thinking Strategy, Designing Transformation.</h1>
+                    <p class="hero-description">
+                        I am <span class="hero-name">Vit Lai</span>, a <strong>Senior UED Director</strong> and <strong>Design Strategist</strong> with over 15 years of expertise. 
                         I specialize in driving <strong>Enterprise Digitalization</strong> through <strong>Design Thinking</strong>—transforming complex business requirements into high-impact, user-centric product experiences.
                     </p>
                 </div>
-                <div style="flex: 1; aspect-ratio: 3/4; overflow: hidden; border-radius: 4px; background: #f0f0f0;">
-                    <img src="images/vitlai-01.jpg" alt="Vit Lai Portrait" style="width:100%; height:100%; object-fit:cover; display:block;">
+                <div class="hero-image-wrapper">
+                    <img src="images/vitlai-01.jpg" alt="Vit Lai Portrait">
                 </div>
             </section>
 
@@ -375,17 +231,21 @@
         </div>
 
         <div id="portfolio" class="page-content">
-            <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Selected Works</h2>
+            <h2 style="font-size: 2.5rem; margin-bottom: 50px;">Portfolio Case Studies</h2>
             <div class="work-grid">
-                <div class="work-card" onclick="openProject('healthcare')">
-                    <div class="img-wrap"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800"></div>
-                    <h3>Healthcare Ecosystem</h3>
-                    <p style="font-size: 0.75rem; color:#aaa; text-transform:uppercase;">Service Design</p>
-                </div>
+                
                 <div class="work-card">
-                    <div class="img-wrap"><img src="https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800"></div>
-                    <h3>SaaS Platform</h3>
-                    <p style="font-size: 0.75rem; color:#aaa; text-transform:uppercase;">UX Strategy</p>
+                    <a href="dtwcases01.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="img-wrap"><img src="images/Image-1.png"></div>
+                        <h3>Industrial SaaS & IoT Integration</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Factory Productivity Platform for Shinsung Technology</p>
+                    </a>
+                </div>
+
+                <div class="work-card">
+                    <a href="dtwcases02.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="img-wrap"><img src="images/case02-hero.png"></div>
+                        <h3>AI-Edge Smart City Infrastructure</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Intelligent Water Network & Leak Detection Platform</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -398,7 +258,7 @@
                 
                 <div style="flex:1.2; min-width: 300px;">
                     <h2 style="font-size: 3rem; line-height: 1.1; margin-bottom: 20px;">Ready to start <br>the journey?</h2>
-                    <p style="margin-bottom: 40px; color: #777; font-size: 1.1rem; font-weight: 300;">
+                    <p style="margin-bottom: 40px; color: #666; font-size: 1.1rem; font-weight: 300;">
                         Feel free to reach out for consulting services or project collaborations. <br>
                         You can also connect with me via LinkedIn.
                     </p>
@@ -469,11 +329,64 @@
         }
 
         function openProject(id) {
-            document.getElementById('modal-content').innerHTML = `<h1 style="font-size: 3rem;">Healthcare Ecosystem</h1><p style="margin-top:20px; color:#666; line-height:1.8;">這是一個關於老齡化醫療生態系的服務設計專案...</p>`;
-            document.getElementById('modal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
+    const modalContent = document.getElementById('modal-content');
+    
+    if (id === 'healthcare') {
+        modalContent.innerHTML = `
+            <div class="case-study-container">
+                <header class="case-header">
+                    <p class="case-category">IOT #SAAS PLATFORM #DESIGN THINKING</p>
+                    <h1 class="case-title">IBM Garage: Digital Transformation Case</h1>
+                    <p class="case-subtitle">Electricity Technology Industry Digitalization Project</p>
+                </header>
+
+                <section class="case-section">
+                    <div class="case-grid">
+                        <div class="case-info">
+                            <h4>Project Overview</h4>
+                            <p>广东佛山新昇电力科技有限公司希望通过IBM Garage的方法论进行工厂数字化转型。主要通过条形码扫描枪收集现有设备的生产数据。</p>
+                        </div>
+                        <div class="case-info">
+                            <h4>Role</h4>
+                            <ul>
+                                <li>Design Thinking Workshop Lead</li>
+                                <li>UX/UI Design - Productivity Platform</li>
+                                <li>Functional Architecture Definition</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="case-section">
+                    <div class="figure-box">
+                        <img src="images/case-01.jpg" style="width:100%" alt="Methodology">
+                        <p class="caption">Figure 1: IBM Garage Methodology Framework</p>
+                    </div>
+                </section>
+                
+                </div>
+        `;
+    }
+    
+    document.getElementById('modal').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // 禁止底層捲動
+}
+    function closeProject() { document.getElementById('modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+
+    // 監聽頁面載入事件
+window.addEventListener('DOMContentLoaded', (event) => {
+    // 檢查網址是否有 #portfolio 錨點
+    if (window.location.hash === '#portfolio') {
+        // 調用你原本 index.html 裡的 showPage 函式
+        showPage('portfolio');
+        
+        // 可選：如果頁面很長，可以自動捲動到作品集標題位置
+        const portfolioSection = document.getElementById('portfolio');
+        if (portfolioSection) {
+            portfolioSection.scrollIntoView({ behavior: 'smooth' });
         }
-        function closeProject() { document.getElementById('modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    }
+});
     </script>
 </body>
 </html>
