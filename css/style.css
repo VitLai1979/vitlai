@@ -1,0 +1,360 @@
+/* --- 1. 全域變數與重置 (Combined Roots) --- */
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --sub-text: #707070;
+    --border: #ececec;
+    --accent-bg: #f9f9f9;
+    --sidebar-width: 280px;
+    --ibm-blue: #0f62fe; /* 修正為標準 IBM Blue */
+    --ease: cubic-bezier(0.2, 1, 0.2, 1);
+    --transition: all 0.6s var(--ease);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    -webkit-font-smoothing: antialiased; 
+}
+
+body { 
+    font-family: 'IBM Plex Sans', sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6; 
+    overflow-x: hidden; 
+}
+
+h1, h2, h3, .logo { 
+    font-family: 'Playfair Display', serif; 
+    font-weight: 500; 
+}
+
+/* --- 2. 導航系統 (Sidebar Navigation) --- */
+header {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: var(--sidebar-width); 
+    height: 100vh;
+    padding: 60px 45px; 
+    border-right: 1px solid var(--border);
+    display: flex; 
+    flex-direction: column; 
+    z-index: 1000; 
+    background: white;
+    transition: var(--transition);
+}
+
+.logo { 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    letter-spacing: -0.5px; 
+    margin-bottom: 80px; 
+}
+
+nav ul { list-style: none; }
+nav ul li { margin-bottom: 25px; }
+nav ul li a { 
+    text-decoration: none; 
+    color: var(--sub-text); 
+    font-size: 0.9rem; 
+    letter-spacing: 1px; 
+    transition: var(--transition); 
+    display: block;
+}
+
+nav ul li a:hover, 
+nav ul li a.active { 
+    color: var(--text); 
+    transform: translateX(8px); 
+    font-weight: 600; 
+}
+.sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    padding: 60px 40px; /* 增加內距 */
+    border-right: 1px solid var(--border);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.menu-toggle { 
+    display: none; 
+    position: fixed; 
+    top: 25px; 
+    right: 25px; 
+    z-index: 2000; 
+    cursor: pointer; 
+    font-size: 0.8rem; 
+    letter-spacing: 2px; 
+    background: white; 
+    padding: 10px; 
+    border: 1px solid var(--border); 
+}
+
+/* --- 3. 主佈局與頁面切換 --- */
+main { 
+    margin-left: var(--sidebar-width); 
+    width: calc(100% - var(--sidebar-width)); 
+    min-height: 100vh; 
+    position: relative; 
+}
+
+.page-content { 
+    padding: 120px 10%; 
+    width: 100%;
+    display: none; 
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page-content.active { 
+    display: block; 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* --- 4. 按鈕組件 --- */
+.btn {
+    padding: 14px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.btn-primary { background: #1a1a1a; color: #fff; }
+.btn-primary:hover { background: #404040; transform: translateY(-3px); }
+.btn-primary img { filter: brightness(0) invert(1); }
+
+.btn-secondary { background: transparent; color: #1a1a1a; border-color: #1a1a1a; }
+.btn-secondary:hover { background: #1a1a1a; color: #fff; transform: translateY(-3px); }
+.btn-secondary:hover img { filter: brightness(0) invert(1); }
+
+/* --- 5. CV 佈局與工作列表 --- */
+.cv-row { 
+    display: grid; 
+    grid-template-columns: 150px 1fr; 
+    gap: 40px; 
+    padding: 60px 0; 
+    border-top: 1px solid var(--border); 
+}
+
+.cv-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #aaa; }
+
+.work-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px; 
+}
+
+.work-card { text-decoration: none; color: inherit; cursor: pointer; }
+.img-wrap { 
+    width: 100%; 
+    aspect-ratio: 16/10; 
+    background: #f9f9f9; 
+    overflow: hidden; 
+    margin-bottom: 20px; 
+    border-radius: 4px;
+    transform: scale(1.05); 
+}
+
+.img-wrap img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    transition: transform 1s var(--ease); 
+    filter: grayscale(100%);
+    overflow: hidden; /* 確保縮放時圖片不會超出邊框 */
+    border-radius: 4px;
+}
+
+.work-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
+
+/* --- 6. 彈窗內 Case Study 專屬樣式 --- */
+#modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #fff; z-index: 3000; display: none;
+    overflow-y: auto; padding: 100px 10%;
+}
+
+.case-container { max-width: 1000px; margin: 0 auto; }
+.case-header { margin-bottom: 60px; }
+.case-tag { font-size: 0.7rem; color: var(--ibm-blue); letter-spacing: 2px; margin-bottom: 10px; display: block; }
+.case-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+
+.case-info-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 80px;
+    margin: 60px 0;
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+}
+
+.figure-box { margin: 40px 0; text-align: center; }
+.figure-box img { width: 100%; border-radius: 4px; }
+.caption-box { font-size: 0.85rem; color: var(--sub-text); margin-top: 15px; }
+
+/* 修正圖片容器，確保 dtwcases01 中的圖組排列整齊 */
+.image-container {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.image-container img {
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* 強化 Case Study 的文字間距 */
+.page-content section {
+    margin-bottom: 80px;
+}
+
+.page-content h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px;
+}
+
+/* --- Hero Section: Wide Screen Fix --- */
+.hero-flex {
+    display: flex;
+    gap: 80px;
+    align-items: center; /* 垂直居中 */
+    justify-content: space-between;
+    margin-bottom: 120px;
+    padding-top: 60px;
+    width: 100%;
+    min-height: 500px; /* 給予整個區塊一個最小高度，確保圖片有支撐點 */
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 400px; /* 防止文字區塊無限延伸擠壓圖片 */
+}
+
+.hero-title {
+    font-size: 3.5rem; /* 大氣字級 */
+    line-height: 1.1;
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+    /* 移除 white-space: nowrap，讓它在極寬螢幕下自然排版 */
+    word-break: keep-all; 
+}
+
+.hero-description {
+    font-size: 1rem;
+    color: #333333;
+    max-width: 480px;
+    line-height: 1.8;
+}
+
+/* 圖片容器優化 */
+.hero-image-wrapper {
+    flex: 1.2; 
+    min-width: 500px; /* 關鍵：確保寬屏時圖片至少佔據 500px，不會消失 */
+    height: 600px;    /* 關鍵：設定固定高度，確保圖片大氣感 */
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.hero-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 確保圖片填滿高度且不變形 */
+    display: block;
+}
+
+/* 針對大螢幕（1440px 以上）的微調 */
+@media (min-width: 1440px) {
+    .hero-flex {
+        gap: 120px; /* 增加留白 */
+    }
+}
+
+/* 針對筆電與平板（中等螢幕） */
+@media (max-width: 1200px) {
+    .hero-image-wrapper {
+        min-width: 400px;
+        height: 500px;
+    }
+    .hero-title {
+        font-size: 2.8rem;
+    }
+}
+
+/* 側邊欄導覽連結 - 統一顏色明顯度 */
+#side-nav nav ul li a {
+    text-decoration: none;
+    color: #666; /* 加深預設顏色 */
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    opacity: 1; /* 確保沒有透明度干擾 */
+}
+
+/* 滑鼠懸停與選中狀態 */
+#side-nav nav ul li a:hover,#side-nav nav ul li a.active {
+    color: #1a1a1a !important; /* 強制改為最深色 */
+    font-weight: 600;
+}
+
+
+/* 手機版：切換為垂直排列，圖片在上方 */
+@media (max-width: 768px) {
+    .hero-flex {
+        flex-direction: column-reverse;
+        gap: 40px;
+        min-height: auto;
+    }
+    .hero-image-wrapper {
+        width: 100%;
+        min-width: 100%;
+        height: 400px;
+    }
+}
+
+/* 統一設定網格圖片的高度與呈現方式 */
+.img-grid-3 img, .img-grid-2 img {
+    height: 250px;       /* 您可以根據需求調整這個數值，例如 250px 到 350px */
+    width: 100%;        /* 確保填滿寬度 */
+    object-fit: cover;  /* 關鍵：圖片會填滿容器，超出部分自動裁切不變形 */
+    object-position: top; /* 關鍵：圖片不足或裁切時，優先保留頂部（置上） */
+    display: block;
+}
+
+
+/* 針對 Phase 03 那張橫跨兩欄的大圖 (Dashboard) 做特殊處理，讓它高一點比較大氣 */
+.img-grid-2 img[style*="grid-column: span 2"] {
+    height: 450px;      /* 橫跨圖設定較高的高度 */
+}
+
+/* --- 7. 響應式修正 --- */
+@media (max-width: 1024px) {
+    header { width: 100%; height: 100vh; left: -100%; }
+    header.open { left: 0; }
+    .menu-toggle { display: block; }
+    main { margin-left: 0; width: 100%; }
+    .page-content { padding: 80px 5%; }
+    .cv-row, .case-info-grid { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr; }
+    .case-title { font-size: 2.5rem; }
+}
