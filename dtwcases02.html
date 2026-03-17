@@ -42,6 +42,29 @@
             display: block;
             margin-top: 30px;
         }
+        .impact-list {
+            list-style: none; /* 移除預設黑點，因為你自己寫了 • */
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+        .impact-list li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            display: flex; /* 使用 flex 確保文字過長換行時，點點會對齊第一行 */
+        }
+        .impact-list li::before {
+            content: "•";
+            margin-right: 8px;
+            color: var(--ibm-blue); /* 甚至可以讓點點變藍色，對齊 IBM 風格 */
+        }
+        /* 案例頁面專用：取消左側選單留白，讓內容居中 */
+.page-content {
+    margin-left: 0 !important; 
+    width: 100% !important;
+}
+.container {
+    margin: 0 auto !important;
+}
     </style>
 </head>
 <body>
@@ -153,7 +176,7 @@
             <p>The solution combines a high-level visualization dashboard with a self-learning DNN model. While the dashboard provides real-time alerts, the backend model undergoes continuous iteration to handle complex real-world leak scenarios.</p>
             
             <div style="margin-bottom: 40px;">
-                <img src="images/case02-ui.jpg" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--border-light);" alt="Management Dashboard UI">
+                <img src="images/case02-ui.jpg" style="width: 100%; height: auto; border-radius: 4px; " alt="Management Dashboard UI">
                 <div class="caption-box">
                     <strong>Visualization Dashboard</strong>
                     <p>Real-time node status monitoring and precise leak location mapping based on edge-processed data.</p>
@@ -165,12 +188,11 @@
             </div>
             <div class="caption-box">
                 <strong>Continuous Model Iteration</strong>
-                <p>
-                    Our DNN model underwent three major iterations to ensure reliability:
-                    <br>• <strong>Phase 1:</strong> Initial training achieved 96.01% accuracy in controlled single-leak environments.
-                    <br>• <strong>Phase 2:</strong> Expanded to multi-point leak scenarios (Leak A & B at various angles).
-                    <br>• <strong>Final Stage:</strong> Achieving a stable <strong>93.07% accuracy</strong> across generalized urban pipe network patterns, balancing precision with computational efficiency at the edge.
-                </p>
+                <ul class="impact-list">
+                    <li><strong>Phase 1: </strong> Initial training achieved 96.01% accuracy in controlled single-leak environments.</li>
+                    <li><strong>Phase 2: </strong> Expanded to multi-point leak scenarios (Leak A & B at various angles).</li>
+                    <li><strong>Final: </strong> Achieving a stable 93.07% accuracy across generalized urban pipe network patterns, balancing precision with computational efficiency at the edge.</li>
+                </ul>       
             </div>
         </section>
 

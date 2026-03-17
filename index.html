@@ -8,19 +8,22 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body id="index-body">
 
     <div class="menu-toggle" onclick="toggleMenu()">MENU</div>
 
     <header id="side-nav">
         <div class="logo" onclick="showPage('about');">VIT LAI.</div>
-        <nav>
-            <ul>
-                <li><a href="javascript:void(0)" onclick="showPage('about');" id="link-about" class="active">About</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('portfolio');" id="link-portfolio">Work</a></li>
-                <li><a href="javascript:void(0)" onclick="showPage('contact');" id="link-contact">Contact</a></li>
-            </ul>
-        </nav>
+        <header id="side-nav">
+    <div class="logo" onclick="showPage('about');">VIT LAI.</div>
+    <nav>
+        <ul>
+            <li><a href="#about" onclick="showPage('about');" id="link-about" class="active">About</a></li>
+            <li><a href="#portfolio" onclick="showPage('portfolio');" id="link-portfolio">Work</a></li>
+            <li><a href="#contact" onclick="showPage('contact');" id="link-contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
     </header>
 
     <main>
@@ -237,13 +240,27 @@
                 <div class="work-card">
                     <a href="dtwcases01.html" target="_blank" style="text-decoration: none; color: inherit;">
                         <div class="img-wrap"><img src="images/Image-1.png"></div>
-                        <h3>Industrial SaaS & IoT Integration</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Factory Productivity Platform for Shinsung Technology</p>
+                        <h3>Industrial SaaS and IoT Integration</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Factory Productivity Platform for Shinsung Technology</p>
                     </a>
                 </div>
 
                 <div class="work-card">
                     <a href="dtwcases02.html" target="_blank" style="text-decoration: none; color: inherit;">
                         <div class="img-wrap"><img src="images/case02-hero.png"></div>
+                        <h3>AI-Edge Smart City Infrastructure</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Intelligent Water Network & Leak Detection Platform</p>
+                    </a>
+                </div>
+
+                <div class="work-card">
+                    <a href="dtwcases03.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="img-wrap"><img src="images/case03-hero.png"></div>
+                        <h3>Smart Park Digital Operations Platform</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Data-Driven Decision Intelligence for DongSheng Management</p>
+                    </a>
+                </div>
+
+                <div class="work-card">
+                    <a href="dtwcases04.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="img-wrap"><img src="images/case04-hero.png"></div>
                         <h3>AI-Edge Smart City Infrastructure</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Intelligent Water Network & Leak Detection Platform</p>
                     </a>
                 </div>

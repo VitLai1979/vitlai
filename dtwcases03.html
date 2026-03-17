@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: DongSheng Smart Park | Vit Lai</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    :root {
+        --ibm-blue: #0f62fe;
+        --text-main: #1a1a1a;
+        --text-body: #333333;
+        --text-sub: #666666;
+        --border-light: #ececec;
+        --bg-gray: #f9f9f9; /* 02 使用的灰色背景 */
+    }
+    .page-content p { color: var(--text-body); line-height: 1.8; }
+    .case-title { font-family: 'Playfair Display', serif; color: var(--text-main); }
+    .cv-label { color: var(--text-main); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+    .caption-box { border-left: 2px solid var(--border-light); padding-left: 15px; margin-top: 20px; }
+    .caption-box strong { display: block; margin-bottom: 5px; color: var(--text-main); }
+
+    .case-section h2 { font-size: 1.8rem; margin-bottom: 25px; color: var(--text-main); border-left: 4px solid var(--ibm-blue); padding-left: 15px; }
+    .case-section img {
+            width: 100%;
+            height: auto; /* 關鍵：由 auto 決定高度，確保比例完整 */
+            object-fit: contain; /* 確保內容完整顯示 */
+            border-radius: 4px;
+            display: block;
+            margin-top: 30px;
+        }
+    .impact-list {
+        list-style: none; /* 移除預設黑點，因為你自己寫了 • */
+        padding: 0;
+        margin: 10px 0 0 0;
+    }
+    .impact-list li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+        display: flex; /* 使用 flex 確保文字過長換行時，點點會對齊第一行 */
+    }
+    .impact-list li::before {
+        content: "•";
+        margin-right: 8px;
+        color: var(--ibm-blue); /* 甚至可以讓點點變藍色，對齊 IBM 風格 */
+    }
+</style>
+</head>
+<body class="case-page">
+
+<div class="menu-toggle" onclick="toggleMenu()">MENU</div>
+
+<header id="side-nav">
+    <div class="logo" onclick="location.href='index.html#about';">VIT LAI.</div>
+    <nav>
+        <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#portfolio" class="active">Work</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <article class="page-content active">
+        
+        <div class="case-header" style="margin-bottom: 80px;">
+            <span class="case-tag">IBM Garage Methodology #Digital Transformation</span>
+            <h1 class="case-title" style="font-size: 3.5rem; line-height: 1.1; margin: 20px 0;">DongSheng Smart Park <br>Operational Decision Platform</h1>
+            <p style="font-size: 1.2rem; color: #666; max-width: 800px;">Architecting a data-driven ecosystem (People, Business, Place) to transition from asset management to intelligent decision intelligence.</p>
+        </div>
+
+        <div class="case-info-grid">
+                <div>
+                    <h4 class="cv-label">My Role</h4>
+                    <p>DTW Facilitator, Strategic Definition</p>
+                </div>
+                <div>
+                    <h4 class="cv-label">Project Scope</h4>
+                    <p>Smart Park Management Consulting,Park Business Overview,Label Decision-Making Platform</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="case-section" style="margin-top: 80px;">
+    <h2 class="section-title" style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 30px;">Phase 1: Discovery & The 3D Framework</h2>
+    <p style="margin-bottom: 40px;">
+        In the initial phase, we audited the existing data landscape of DongSheng BoZhan through the <strong>"People, Business, and Place"</strong> dimensions. The vision was to break manual constraints and transition from a "Traditional" asset manager to an "Intelligent" operator.
+    </p>
+    
+    <div class="img-grid-2">
+        <img src="images/case03-vision.jpg" style="grid-column: span 2; width: 100%; height: auto; " alt="People Business Place Vision">
+    </div>
+
+    <div class="caption-box">
+        <strong>Transformation Vision: From Records to Intelligence</strong>
+        <ul class="impact-list">
+            <li><strong>Traditional:</strong> Dependency on paper records and isolated spreadsheets.</li>
+            <li><strong>Digital:</strong> Realizing systematic data recording and process automation.</li>
+            <li><strong>Intelligent:</strong> Enabling smart risk control, digital marketing, and persona-driven services.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="case-section" style="margin-top: 80px;">
+    <h2 class="section-title" style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 30px;">Phase 2: Stakeholder Alignment & Data Audit</h2>
+    <p style="margin-bottom: 40px;">
+        We facilitated <strong>Design Thinking Workshops (DTW)</strong> to map the <strong>User Journey</strong> across property, marketing, and investment teams. This stage involved a deep <strong>Data Inventory</strong> to summarize the complex relationships between legacy systems and information gaps.
+    </p>
+    
+    <div class="img-grid-2">
+        <img src="images/case03-workshop.jpg" style="grid-column: span 2; width: 100%; height: auto;" alt="System Relationship Summary">
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
+        <div class="caption-box" style="margin-top: 0;">
+            <strong>System Relationship Summary</strong>
+            <p style="font-size: 0.9rem;">Consolidating fragmented property, tenant, and industry data into a unified "Knowledge Graph" foundation.</p>
+        </div>
+        <div class="caption-box" style="margin-top: 0;">
+            <strong>Data Pain-point Summary</strong>
+            <p style="font-size: 0.9rem;">Addressing issues of high information redundancy, single external channels, and stagnant company records.</p>
+        </div>
+    </div>
+</section>
+
+<section class="case-section" style="margin-top: 80px;">
+    <h2 class="section-title" style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 30px;">Phase 3: Label Architecture & Graph Construction</h2>
+    <p style="margin-bottom: 40px;">
+        <strong>Action 1 & 2:</strong> We architected the <strong>7-Dimension Enterprise Labeling System</strong>. This involves constructing a "Digital Twin" for every enterprise, utilizing Knowledge Graphs to discover hidden relationships and business opportunities.
+    </p>
+    
+    <div class="img-grid-2">
+        <img src="images/case03-tags.jpg" style="grid-column: span 2; width: 100%; height: auto; alt="7-Dimension Labeling Architecture">
+    </div>
+
+    <div class="caption-box">
+        <strong>The 7 Pillars of Enterprise Personas</strong>
+        <ul class="impact-list">
+            <li><strong>Basic Info:</strong> Business scope, registration details, and operational status.</li>
+            <li><strong>Group/Affiliates:</strong> Tracking corporate hierarchy and scale of affiliate groups.</li>
+            <li><strong>Risk Control:</strong> Monitoring legal disputes, tax arrears, and associated credit risks.</li>
+            <li><strong>Financial Status:</strong> Deep analysis of assets, liabilities, and profitability indicators.</li>
+            <li><strong>Credit & Sentiment:</strong> Real-time integration of public opinion and credit history.</li>
+            <li><strong>Knowledge Graph:</strong> Mapping the "Vitality" of enterprises through synchronized market data.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="case-section" style="margin-top: 80px;">
+    <h2 class="section-title" style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 30px;">Phase 4: Functional Structure & Operational Empowerment</h2>
+    <p style="margin-bottom: 40px;">
+        <strong>Action 3:</strong> The final <strong>Digital Operation Platform Structure</strong> ensures that all departments can extract synchronized data to refine strategies. This transforms the park into a proactive service incubator.
+    </p>
+    
+    <div class="img-grid-2">
+        <img src="images/case03-architecture.jpg" style="grid-column: span 2; width: 100%; height: auto; " alt="Functional Structure">
+    </div>
+
+    <div class="img-grid-2" style="margin-top: 40px;">
+        <img src="images/case03-ui.jpg" style="grid-column: span 2; width: 100%; height: auto; " alt="Operational Command Center">
+    </div>
+
+    <div class="caption-box">
+        <strong>Core Empowerment Outcomes</strong>
+        <ul class="impact-list">
+            <li><strong>Property Management:</strong> IoT-driven spatial management and facility record automation.</li>
+            <li><strong>Investment & Services:</strong> Pre-investment risk evaluation and precise talent/subsidy matching.</li>
+            <li><strong>Recruitment:</strong> Identifying high-potential startups through industry cluster analysis.</li>
+            <li><strong>Dynamic Monitoring:</strong> Real-time alerts for significant news or changes in company status.</li>
+        </ul>
+    </div>
+</section>
+
+        <footer style="margin-top: 100px; padding-top: 60px; border-top: 1px solid var(--border-light); text-align: center;">
+            <a href="index.html#portfolio" style="text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
+                ← Back to Work
+            </a>
+        </footer>
+    </article>
+</main>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('side-nav').classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>
