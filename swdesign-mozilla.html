@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Mozilla Firefox Localize & Portal | Vit Lai</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --ibm-blue: #0f62fe;
+            --text-main: #1a1a1a;
+            --text-body: #333333;
+            --text-sub: #666666;
+            --border-light: #ececec;
+        }
+
+        /* 繼承自 Kyligence 的專業 B 端樣式 */
+        .page-content p { color: var(--text-body); line-height: 1.8; margin-bottom: 1.5rem; }
+        .case-title { font-family: 'Playfair Display', serif; color: var(--text-main); }
+        
+        .caption-box { border-left: 2px solid var(--ibm-blue); padding-left: 15px; margin: 20px 0 30px 0; }
+        .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0; }
+        .hero-img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        section { margin-bottom: 100px; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 15px; }
+
+        /* Kyligence 風格的高級對照表格 */
+        .comparison-container { margin: 40px 0; overflow-x: auto; }
+        .comparison-table { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; background-color: #ffffff; }
+        .comparison-table thead tr { background-color: #161616; color: #ffffff; text-align: left; }
+        .comparison-table th { padding: 18px 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem; }
+        .comparison-table td { padding: 20px 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; line-height: 1.6; color: #333; }
+        .comparison-table tbody tr:nth-child(even) { background-color: #f8f9fa; }
+        .comparison-table tbody tr:hover { background-color: #edf5ff; transition: background-color 0.3s ease; }
+        .comparison-table td:first-child { font-weight: 600; color: var(--ibm-blue); width: 25%; }
+        
+        .impact-list { padding-left: 20px; color: var(--text-body); }
+        .impact-list li { margin-bottom: 10px; }
+
+        /* 下載區塊樣式 */
+        .download-section { display: flex; justify-content: space-between; align-items: center; gap: 40px; padding: 60px 0; margin-top: 80px; border-top: 1px solid var(--border-light); width: 100%; }
+        .download-content h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0 0 10px 0; color: #1a1a1a; }
+        .download-buttons { display: flex; gap: 15px; }
+        .btn-download { display: inline-flex; align-items: center; padding: 12px 24px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; text-decoration: none !important; border-radius: 2px; transition: all 0.3s ease; }
+        .btn-download:hover { background-color: #0f62fe; border-color: #0f62fe; color: #ffffff !important; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <header id="side-nav">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">VIT LAI.</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="index.html" class="active">Work</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div style="margin-top: auto; font-size: 0.7rem; color: #ccc; letter-spacing: 1px;">&copy; 2024 PORTFOLIO</div>
+    </header>
+
+    <main class="container">
+        <article class="page-content active">
+            <div class="case-header" style="margin-bottom: 80px;">
+                <span class="case-tag">Browser & Portal Ecosystem</span>
+                <h1 class="case-title" style="font-size: 3.5rem; line-height: 1.1; margin: 20px 0;">Mozilla: Firefox Localize & MyFirefox Portal</h1>
+                <p style="font-size: 1.2rem; color: #666; max-width: 800px;">
+                    Countering market share decline through localized browser experiences and a content-driven portal, generating over 1.2M TWD in new revenue streams.
+                </p>
+            </div>
+
+            <div class="case-info-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px;">
+                <div>
+                    <h4 class="cv-label">My Role</h4>
+                    <p>UX/UI Designer, Portal Product Lead, Localized Experience Architect</p>
+                </div>
+                <div>
+                    <h4 class="cv-label">Project Scope</h4>
+                    <p>Browser Customization (Taiwan), MyFirefox Portal Design, E-commerce Integration, Ad Business Model</p>
+                </div>
+            </div>
+
+            <section>
+                <img src="images/mozilla-hero.jpg" alt="Mozilla Firefox Project Overview" style="width:100%; height: auto;">
+                <div class="caption-box">
+                    <strong>Business Background</strong>
+                    <p>Faced with intense competition from Google Chrome, Mozilla's global market share was under pressure. In Taiwan, we launched "MyFirefox," a localized portal and browser ecosystem designed to stabilize the user base and explore diversified profit models beyond open-source donations.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Strategic Transformation</h2>
+                <p>We transitioned from a pure tool (Browser) to a lifestyle platform (Portal + Store), creating a closed-loop for user growth and profitability.</p>
+                
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>The Challenge (2012)</th>
+                                <th>The Solution (2014)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Market Position</strong></td>
+                                <td>Market share declining (20.2% to 15.7% globally).</td>
+                                <td>Maintained stable market rate in Taiwan through localized features.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business Model</strong></td>
+                                <td>Single revenue stream from search engines.</td>
+                                <td>Diversified profit (Ads + Online Store + Peripheral Products).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>User Engagement</strong></td>
+                                <td>Low-frequency browser interactions.</td>
+                                <td>High-frequency tech news portal (MyFirefox) engagement.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>The MyFirefox Ecosystem</h2>
+                <div class="img-grid-2">
+                    <div>
+                        <img src="images/mozilla-portal.jpg" alt="MyFirefox Portal Design" style="width:100%; height: auto;">
+                        <div class="caption-box">
+                            <strong>Portal Site (MyFirefox)</strong>
+                            <p>A centralized platform collecting tech news and open-source community updates to foster user loyalty.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="images/mozilla-localize.jpg" alt="Localized Browser" style="width:100%; height: auto;">
+                        <div class="caption-box">
+                            <strong>Localized Browser</strong>
+                            <p>Customizing the Firefox Taiwan edition with pre-installed localized bookmarks and community extensions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Commercial Success & Impact</h2>
+                <p>By integrating peripheral product stores and advertisement slots, we successfully monetized the Firefox brand presence in Taiwan.</p>
+                <img src="images/mozilla-store.jpg" alt="Mozilla Online Store" style="width:100%; height: auto; margin-bottom: 30px;">
+                <div class="caption-box">
+                    <strong>Key Results</strong>
+                    <ul class="impact-list">
+                        <li><strong>Revenue Generation:</strong> Earned over 1.2M TWD through advertisements and the peripheral online store.</li>
+                        <li><strong>Growth in Profit:</strong> Peripheral product revenue grew from 5K to 200K TWD within two years.</li>
+                        <li><strong>Community Spirit:</strong> Successfully promoted the open-source spirit through merchandise (G-Fox, Apparel, etc.).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="download-section">
+                <div class="download-content">
+                    <h3>Full Case Study</h3>
+                    <p>Download the detailed PDF version for more technical insights and methodology details.</p>
+                </div>
+                <div class="download-buttons">
+                    <a href="pdf/Kyligence-BigdataAcceleration-EN.pdf" class="btn-download btn-en" download>
+                        Download (EN)
+                    </a>
+                    <a href="pdf/Kyligence-BigdataAcceleration-CN.pdf" class="btn-download btn-zh" download>
+                        下載 (中文)
+                    </a>
+                </div>
+            </section>
+
+            <footer style="margin-top: 100px; padding-top: 60px; border-top: 1px solid var(--border-light); text-align: center;">
+                <a href="index.html#portfolio" style="text-decoration: none; color: var(--text-main); font-weight: 600;">
+                    ← Back to Portfolio
+                </a>
+            </footer>
+        </article>
+    </main>
+</body>
+</html>

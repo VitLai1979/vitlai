@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Enterprise Design System | Vit Lai</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 繼承自代碼範例的專案特定樣式 */
+        :root {
+            --ibm-blue: #0f62fe;
+            --text-main: #1a1a1a;
+            --text-body: #333333;
+            --text-sub: #666666;
+            --border-light: #ececec;
+        }
+
+        .page-content p { color: var(--text-body); line-height: 1.8; margin-bottom: 1.5rem; }
+        .case-title { font-family: 'Playfair Display', serif; color: var(--text-main); }
+        
+        .cv-label { font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px; color: var(--text-main); }
+        .caption-box { border-left: 2px solid var(--ibm-blue); padding-left: 15px; margin: 20px 0 30px 0; }
+        .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0; }
+        .hero-img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        section { margin-bottom: 100px; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 15px; }
+
+        /* 對照表格樣式 */
+        .comparison-container { margin: 40px 0; overflow-x: auto; }
+        .comparison-table { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; background-color: #ffffff; }
+        .comparison-table thead tr { background-color: #161616; color: #ffffff; text-align: left; }
+        .comparison-table th { padding: 18px 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem; }
+        .comparison-table td { padding: 20px 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; line-height: 1.6; color: #333; }
+        .comparison-table tbody tr:nth-child(even) { background-color: #f8f9fa; }
+        .comparison-table tbody tr:hover { background-color: #edf5ff; transition: background-color 0.3s ease; }
+        .comparison-table td:first-child { font-weight: 600; color: var(--ibm-blue); width: 25%; }
+        
+        .impact-list { padding-left: 20px; color: var(--text-body); }
+        .impact-list li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <header id="side-nav">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">VIT LAI.</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="index.html" class="active">Work</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div style="margin-top: auto; font-size: 0.7rem; color: #ccc; letter-spacing: 1px;">&copy; 2024 PORTFOLIO</div>
+    </header>
+
+    <main class="container">
+        <article class="page-content active">
+            <div class="case-header" style="margin-bottom: 80px;">
+                <span class="case-tag">Enterprise Design System</span>
+                <h1 class="case-title" style="font-size: 3.5rem; line-height: 1.1; margin: 20px 0;">Scalable Component Library & Design Guideline</h1>
+                <p style="font-size: 1.2rem; color: #666; max-width: 800px;">
+                    Establishing a unified design language from 0 to 1, empowering product teams to build consistent, accessible, and high-quality enterprise solutions.
+                </p>
+            </div>
+
+            <div class="case-info-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px;">
+                <div>
+                    <h4 class="cv-label">My Role</h4>
+                    <p>Design System Lead, UI/UX Architect, Frontend Engineering Liaison</p>
+                </div>
+                <div>
+                    <h4 class="cv-label">Project Scope</h4>
+                    <p>Component Library (Figma/Code), Visual Identity, Design Token Strategy, Documentation Site</p>
+                </div>
+            </div>
+
+            <section>
+                <img src="images/ds-hero-overview.jpg" alt="Design System Overview" style="width:100%; height: auto;">
+                <div class="caption-box">
+                    <strong>Background</strong>
+                    <p>Faced with growing product lines and inconsistent user experiences, we built a comprehensive design system. This initiative aimed to bridge the gap between design and engineering, ensuring visual consistency and accelerating development velocity across the enterprise PaaS/SaaS ecosystem.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>From Chaos to Cohesion</h2>
+                <p>We transformed a fragmented product landscape into a unified ecosystem by quantifying the design debt and establishing clear token-based standards.</p>
+                
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Before (Chaos)</th>
+                                <th>After (Cohesion)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Visual Consistency</strong></td>
+                                <td>Multiple, inconsistent UI libraries and style deviations.</td>
+                                <td>Single source of truth via Design Tokens (Color, Typography, Spacing).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Development Speed</strong></td>
+                                <td>Reinventing components for every new feature; high engineering overhead.</td>
+                                <td>Drag-and-drop pre-built, tested components; significant velocity boost.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Design-Dev Handoff</strong></td>
+                                <td>Fragmented communication; static redlines; interpretation errors.</td>
+                                <td>Shared component library (Figma to Code); automated token sync.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>Design Foundations</h2>
+                <p>The core values of the system were defined through fundamental visual elements, ensuring accessibility and clarity were built-in from the ground up.</p>
+                
+                <div class="img-grid-2">
+                    <div>
+                        <img src="images/ds-color-system.jpg" alt="Color System" style="width:100%; height: auto;">
+                        <div class="caption-box">
+                            <strong>Color Strategy</strong>
+                            <p>Defined primary, secondary, and semantic colors with clear accessibility guidelines (WCAG compliance).</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="images/ds-typography.jpg" alt="Typography System" style="width:100%; height: auto;">
+                        <div class="caption-box">
+                            <strong>Typography</strong>
+                            <p>Established a scalable typographic scale for hierarchies, optimizing readability across devices.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Atomic Component Library</h2>
+                <p>Following Atomic Design principles, we built a library of modular, reusable components from basic Atoms to complex Organisms.</p>
+                
+                <img src="images/ds-atomic-structure.jpg" alt="Atomic Design Structure" style="width:100%; height:auto; margin-bottom: 30px;">
+                
+                <div class="caption-box">
+                    <strong>Components & Documentation</strong>
+                    <ul class="impact-list">
+                        <li><strong>Atoms:</strong> Buttons, Inputs, Icons, Tooltips (Pure, stateful components).</li>
+                        <li><strong>Molecules:</strong> Search bars, Form fields, Card headers (Combinations of atoms).</li>
+                        <li><strong>Organisms:</strong> Navbars, Data tables, Complex forms (Distinct sections of an interface).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Governance & Figma Workflow</h2>
+                <p>We established a contribution and maintenance model to ensure the system remains alive and relevant to product needs.</p>
+                
+                <div class="img-grid-2">
+                    <div>
+                        <img src="images/ds-figma-library.jpg" alt="Figma Component Library" style="width:100%; height: auto;">
+                    </div>
+                    <div>
+                        <img src="images/ds-code-documentation.jpg" alt="Design System Documentation" style="width:100%; height: auto;">
+                    </div>
+                </div>
+                <div class="caption-box">
+                    <strong>Unified Handoff</strong>
+                    <p>The library is mirrored between Figma and Code (React/Web Components), ensuring that design intents are perfectly translated into engineering implementation.</p>
+                </div>
+            </section>
+            <section class="download-section">
+                <div class="download-content">
+                    <h3>Full Design Language Study</h3>
+                    <p>Download the detailed PDF version for more understanding of design process.</p>
+                </div>
+                <div class="download-buttons">
+                    <a href="pdf/Kyligence-BigdataAcceleration-EN.pdf" class="btn-download btn-en" download>
+                        Download (EN)
+                    </a>
+                    <a href="pdf/Kyligence-BigdataAcceleration-CN.pdf" class="btn-download btn-zh" download>
+                        下載 (中文)
+                    </a>
+                </div>
+            </section>
+
+            <footer style="margin-top: 100px; padding-top: 60px; border-top: 1px solid var(--border-light); text-align: center;">
+                <a href="index.html#portfolio" style="text-decoration: none; color: var(--text-main); font-weight: 600;">
+                    ← Back to Portfolio
+                </a>
+            </footer>
+        </article>
+    </main>
+</body>
+</html>

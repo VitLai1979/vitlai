@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Linkedcare Dental SaaS | Vit Lai</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --ibm-blue: #0f62fe;
+            --text-main: #1a1a1a;
+            --text-body: #333333;
+            --text-sub: #666666;
+            --border-light: #ececec;
+        }
+
+        /* 繼承自 Kyligence 的專業 B 端樣式 */
+        .page-content p { color: var(--text-body); line-height: 1.8; margin-bottom: 1.5rem; }
+
+        .case-title { font-family: 'Playfair Display', serif; color: var(--text-main); }
+        
+        .cv-label { font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px; color: var(--text-main); }
+        .caption-box { border-left: 2px solid var(--ibm-blue); padding-left: 15px; margin: 20px 0 30px 0; }
+        .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0; }
+        .hero-img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        section { margin-bottom: 100px; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 15px; }
+
+        /* Kyligence 風格的高級對照表格 */
+        .comparison-container { margin: 40px 0; overflow-x: auto; }
+        .comparison-table { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; background-color: #ffffff; }
+        .comparison-table thead tr { background-color: #161616; color: #ffffff; text-align: left; }
+        .comparison-table th { padding: 18px 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem; }
+        .comparison-table td { padding: 20px 15px; border-bottom: 1px solid #e0e0e0; vertical-align: top; line-height: 1.6; color: #333; }
+        .comparison-table tbody tr:nth-child(even) { background-color: #f8f9fa; }
+        .comparison-table tbody tr:hover { background-color: #edf5ff; transition: background-color 0.3s ease; }
+        .comparison-table td:first-child { font-weight: 600; color: var(--ibm-blue); width: 25%; }
+        
+        .impact-list { padding-left: 20px; color: var(--text-body); }
+        .impact-list li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <header id="side-nav">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">VIT LAI.</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="index.html" class="active">Work</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div style="margin-top: auto; font-size: 0.7rem; color: #ccc; letter-spacing: 1px;">&copy; 2024 PORTFOLIO</div>
+    </header>
+
+    <main class="container">
+        <article class="page-content active">
+            <div class="case-header" style="margin-bottom: 80px;">
+                <span class="case-tag">Medical SaaS Platform</span>
+                <h1 class="case-title" style="font-size: 3.5rem; line-height: 1.1; margin: 20px 0;">Linkedcare: Dental Clinic Management Ecosystem</h1>
+                <p style="font-size: 1.2rem; color: #666; max-width: 800px;">
+                    Optimizing a complex healthcare SaaS platform through rigorous user research and testing, resulting in a 12.5% increase in task efficiency.
+                </p>
+            </div>
+
+            <div class="case-info-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px;">
+                <div>
+                    <h4 class="cv-label">My Role</h4>
+                    <p>Senior UX Researcher & Designer, User Interviewer, Mobile Experience Lead</p>
+                </div>
+                <div>
+                    <h4 class="cv-label">Project Scope</h4>
+                    <p>User Interviewing, SUS Evaluation, SaaS Workflow Optimization, Patient App Design</p>
+                </div>
+            </div>
+
+            <section>
+                <img src="images/linkedcare-hero.jpg" alt="Linkedcare Dashboard Overview" style="width:100%; height: auto;">
+                <div class="caption-box">
+                    <strong>Business Background</strong>
+                    <p>Linkedcare is a leading dental SaaS provider. My mission was to scale its usability alongside its rapid business growth (from 12,000 to over 25,000 clinics), ensuring the complex EMR and scheduling systems remained efficient for clinical staff.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Evidence-Based Transformation</h2>
+                <p>Using the System Usability Scale (SUS), I quantified the impact of design iterations on user satisfaction and operational speed.</p>
+                
+                <div class="comparison-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Dec 2016 (Baseline)</th>
+                                <th>Aug 2017 (Optimized)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SUS Score</strong></td>
+                                <td>65 (Grade C)</td>
+                                <td>77.5 (Grade B+) - Excellent</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Task Efficiency</strong></td>
+                                <td>3:12 mins avg. per task</td>
+                                <td>2:55 mins avg. (12.5% Improvement)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Market Scale</strong></td>
+                                <td>12,000 active clinics</td>
+                                <td>25,300 active clinics (59% Growth)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>User Research & Insights</h2>
+                <div class="img-grid-2">
+                    <div>
+                        <img src="images/linkedcare-interview.jpg" alt="User Interview Session" style="width:100%; height: auto;">
+                        <div class="caption-box">
+                            <strong>Stakeholder Interviews</strong>
+                            <p>Deep-diving into the "Day in the Life" of dental assistants to uncover appointment bottleneck causes.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="images/linkedcare-journey.jpg" alt="User Journey Mapping">
+                        <div class="caption-box">
+                            <strong>Experience Mapping</strong>
+                            <p>Visualizing the end-to-end patient journey to optimize X-ray imaging and EMR synchronization.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Strategic Operational Interventions</h2>
+                <p>My redesign focused on bridging the gap between clinical operations and digital management, transforming the fragmented SaaS tool into a high-performance medical ecosystem.</p>
+                
+                <div class="img-grid">
+                    <img src="images/linkedcare-workflow-redesign.jpg" style="width:100%; height: auto;" alt="Redesigned Medical Workflow">
+                </div>
+
+                <div class="caption-box">
+                    <strong>Workflow & Interface Optimization</strong>
+                    <ul class="impact-list">
+                        <li><strong>Digital EMR Transformation:</strong> Eliminated redundant paper-to-digital entry by integrating X-ray sensors and imaging equipment directly into the patient’s digital chart, reducing diagnostic waiting time.</li>
+                        <li><strong>Intelligent Scheduling Engine:</strong> Redesigned the calendar interface from a static view to an interactive "Command Center," allowing nurses to manage multi-doctor shifts and chair turnover with drag-and-drop simplicity.</li>
+                        <li><strong>Automated Insurance Middleware:</strong> Built a streamlined billing interface that auto-populates National Health Insurance claim codes, reducing manual input errors by 30% and accelerating clinic cash flow.</li>
+                        <li><strong>Patient-Doctor Feedback Loop:</strong> Established a seamless mobile-to-PC connection where patient post-treatment data and self-bookings are instantly synchronized with the clinic's CRM for proactive follow-ups.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="download-section">
+                <div class="download-content">
+                    <h3>Full Case Study</h3>
+                    <p>Download the detailed PDF version for more technical insights and methodology details.</p>
+                </div>
+                <div class="download-buttons">
+                    <a href="pdf/Kyligence-BigdataAcceleration-EN.pdf" class="btn-download btn-en" download>
+                        Download (EN)
+                    </a>
+                    <a href="pdf/Kyligence-BigdataAcceleration-CN.pdf" class="btn-download btn-zh" download>
+                        下載 (中文)
+                    </a>
+                </div>
+            </section>
+
+            <footer style="margin-top: 100px; padding-top: 60px; border-top: 1px solid var(--border-light); text-align: center;">
+                <a href="index.html#portfolio" style="text-decoration: none; color: var(--text-main); font-weight: 600;">
+                    ← Back to Work
+                </a>
+            </footer>
+        </article>
+    </main>
+</body>
+</html>

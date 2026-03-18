@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Kyligence Big Data Platform | Vit Lai</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --ibm-blue: #0f62fe;
+            --text-main: #1a1a1a;
+            --text-body: #333333;
+            --text-sub: #666666;
+            --border-light: #ececec;
+        }
+        .page-content p { color: var(--text-body); line-height: 1.8; }
+        .case-title { font-family: 'Playfair Display', serif; color: var(--text-main); font-size: 2.5rem; margin-bottom: 1rem; }
+        .cv-label { color: var(--text-main); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .caption-box { border-left: 2px solid var(--ibm-blue); padding-left: 15px; margin-top: 20px; }
+        .impact-list { padding-left: 20px; color: var(--text-body); }
+        .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0;}
+        .img-grid-3 img{ display: grid; grid-template-columns: 1fr; gap: 20px; margin: 40px 0; height: auto; width: 100%;}
+        .hero-img { width: 100%; height: auto; border-radius: 4px; }
+        .tag-container { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+        .tag { background: #f4f4f4; padding: 4px 12px; border-radius: 16px; font-size: 0.85rem; color: var(--text-sub); }
+
+        /* 表格容器样式 */
+    .comparison-container {
+        margin: 40px 0;
+        overflow-x: auto; /* 适配移动端 */
+    }
+
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95rem;
+        background-color: #ffffff;
+    }
+
+    /* 标题栏设计 */
+    .comparison-table thead tr {
+        background-color: #161616; /* 极简黑/深灰 */
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .comparison-table th {
+        padding: 18px 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.85rem;
+    }
+
+    /* 内容行设计 */
+    .comparison-table td {
+        padding: 20px 15px;
+        border-bottom: 1px solid #e0e0e0;
+        vertical-align: top;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* 斑马纹与悬停效果 */
+    .comparison-table tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .comparison-table tbody tr:hover {
+        background-color: #edf5ff; /* 淡淡的 IBM Blue 悬停色 */
+        transition: background-color 0.3s ease;
+    }
+
+    /* 维度列强调 */
+    .comparison-table td:first-child {
+        font-weight: 600;
+        color: #0f62fe; /* IBM Blue 强调 */
+        width: 20%;
+    }
+
+    /* 内容列宽度平分 */
+    .comparison-table td:not(:first-child) {
+        width: 40%;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 768px) {
+        .comparison-table {
+            font-size: 0.85rem;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 12px 10px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header id="side-nav">
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; color: inherit;">VIT LAI.</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="index.html" class="active">Work</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div style="margin-top: auto; font-size: 0.7rem; color: #ccc; letter-spacing: 1px;">&copy; 2024 PORTFOLIO</div>
+    </header>
+
+<main class="container">
+    <article class="page-content active">
+
+        <div class="case-header" style="margin-bottom: 80px;">
+            <span class="case-tag">Big Data Acceleration Platform</span>
+            <h1 class="case-title" style="font-size: 3.5rem; line-height: 1.1; margin: 20px 0;">Kyligence Enterprise: Simplifying Big Data Modeling</h1>
+            <p style="font-size: 1.2rem; color: #666; max-width: 800px;">
+                Transforming sophisticated SQL-heavy engineering workflows into an intuitive PaaS experience, empowering data analysts to build high-performance models with ease.
+            </p>
+        </div>
+        
+        <div class="case-info-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px;">
+            <div>
+                <h4 class="cv-label" style="font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px;">My Role</h4>
+                <p>Lead UX Designer, DT Workshop Facilitator, Design System Architect</p>
+            </div>
+            <div>
+                <h4 class="cv-label" style="font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px;">Project Scope</h4>
+                <p>PaaS Platform Redesign, SQL Workflow Optimization, Enterprise Design System (0 to 1), Data Visualization</p>
+            </div>
+        </div>
+
+        <section>
+            <img src="images/ke-hero.jpg" class="hero-img" alt="Kyligence Enterprise Interface">
+            <div class="caption-box">
+                <strong>Background</strong>
+                <p>Kyligence Enterprise (KE) is a high-threshold software that requires deep SQL knowledge and an understanding of big data architecture. This high barrier to entry made it difficult for new users. My goal was to simplify complex engineering workflows into intuitive experiences for both experts and novices.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Design Methodology: From Chaos to Clarity</h2>
+            <p>I introduced a structured research process to validate user behaviors and redefine the product's core interaction model.</p>
+            <div class="img-grid-2">
+                <div class="caption-box">
+                    <strong>Double-Diamond Framework</strong>
+                    <p>Utilized the Double-Diamond process to diverge and discover pain points, then converge on specific expert vs. beginner functional paths.</p>
+                </div>
+                <div class="caption-box">
+                    <strong>Empathy Mapping</strong>
+                    <p>Guided stakeholders through Empathy Mapping and User Journey workshops to align internal teams with real-world user frustrations.</p>
+                </div>
+            </div>
+            <img src="images/ke-workshop.jpg" class="hero-img" alt="Workshop Process">
+        </section>
+
+        <section>
+            <h2>Strategic UX Improvements</h2>
+            <p>We identified 4 critical problems: Sophisticated settings, inconsistent behavior, poor UI feedback, and lack of visual data trends.</p>
+            
+            <div class="img-grid-2">
+                <div>
+                    <img src="images/ke-workflow-before.jpg" class="hero-img" alt="Legacy Workflow"style="height:auto;">
+                    <div class="caption-box">
+                        <strong>Before: Cognitive Overload</strong>
+                        <p>Users were forced through 7 mandatory steps with redundant functions exposed, leading to high abandonment rates.</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="images/ke-workflow-after.jpg" class="hero-img" alt="New Workflow" style="height:auto;">
+                    <div class="caption-box" style="border-left-color: var(--ibm-blue);">
+                        <strong>After: Smart Segmentation</strong>
+                        <p>Implemented a collapsible advanced settings feature. This allows beginners to focus on core tasks while experts retain full control.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Enhanced Data Visualization</h2>
+            <p>Analysts expressed a strong need for tracking data fluctuations. I redesigned the dashboard to move beyond text logs to high-density visual diagnostics.</p>
+            <div class="img-grid-3">
+                <img src="images/ke-viz-1.jpg" alt="Data Trends">
+                <img src="images/ke-viz-2.jpg" alt="Diagnostic Dashboard">
+            </div>
+            <div class="caption-box">
+                <strong>Visual Impact</strong>
+                <ul class="impact-list">
+                    <li>Integrated trend charts for model comparison.</li>
+                    <li>Unified branding with a clean, tech-focused visual language (transitioning from deep dark to professional white themes).</li>
+                    <li>Reinforced system reminders and feedback loops to prevent user errors during long-running data tasks.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>UX Transformation Summary</h2>
+            <div class="comparison-container">
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Dimension</th>
+                <th>Legacy Experience</th>
+                <th>Redesigned Solution</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>User Flow</td>
+                <td>7 mandatory steps; rigid and engineering-driven workflow.</td>
+                <td>Guided wizard with smart defaults; hidden advanced functions for power users.</td>
+            </tr>
+            <tr>
+                <td>UI Feedback</td>
+                <td>Fragmented UI with high cognitive load; poor error prevention mechanisms.</td>
+                <td>Reinforced system reminders; integrated corporate branding with professional white theme.</td>
+            </tr>
+            <tr>
+                <td>Data Insight</td>
+                <td>Text-heavy logs; no visual trend observation for data fluctuations.</td>
+                <td>Comprehensive visual dashboards with high-density diagnostic charts and analytics.</td>
+            </tr>
+            <tr>
+                <td>Consistency</td>
+                <td>Inconsistent module behavior across different product versions.</td>
+                <td>Unified Design System established from 0 to 1 across the entire PaaS ecosystem.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+        </section>
+
+        <section class="download-section">
+                <div class="download-content">
+                    <h3>Full Case Study</h3>
+                    <p>Download the detailed PDF version for more technical insights and methodology details.</p>
+                </div>
+                <div class="download-buttons">
+                    <a href="pdf/Kyligence-BigdataAcceleration-EN.pdf" class="btn-download btn-en" download>
+                        Download (EN)
+                    </a>
+                    <a href="pdf/Kyligence-BigdataAcceleration-CN.pdf" class="btn-download btn-zh" download>
+                        下載 (中文)
+                    </a>
+                </div>
+            </section>
+
+        <footer style="margin-top: 100px; padding-top: 60px; border-top: 1px solid var(--border-light); text-align: center;">
+            <a href="index.html#portfolio" style="text-decoration: none; color: var(--text-main); font-weight: 600;">
+                ← Back to Portfolio
+            </a>
+        </footer>
+    </article>
+</main>
+</body>
+</html>

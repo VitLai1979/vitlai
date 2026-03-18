@@ -6,6 +6,64 @@
     <title>Vit Lai | Design Strategy</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- 下載區塊共用樣式 --- */
+.download-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 0;
+    margin-top: 80px;
+    border-top: 1px solid #ececec; /* 這條就是你要的線 */
+    width: 100%;
+}
+
+.download-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+    color: #1a1a1a;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none !important; /* 強制去掉底線 */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* 中文按鈕：黑底白字 */
+.btn-zh {
+    background-color: #1a1a1a;
+    color: #ffffff !important;
+}
+
+/* 英文按鈕：黑框黑字 */
+.btn-en {
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a !important;
+}
+
+.btn-download:hover {
+    background-color: #0f62fe; /* IBM Blue */
+    border-color: #0f62fe;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+    </style>
 </head>
 
 <body id="index-body">
@@ -81,6 +139,7 @@
                             <span style="padding: 6px 14px; border: 1px solid #eee; font-size: 0.8rem; color: #666; border-radius: 2px;">Service Design</span>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -231,6 +290,19 @@
 
                 </div>
             </div>
+            <div style="clear: both; width: 100%;"> 
+                <section class="download-section">
+                    <div class="download-content">
+                        <h3>Download My Resume</h3>
+                        <p>Available in both English and Chinese versions.</p>
+                    </div>
+                    <div class="download-buttons">
+                        <a href="pdf/Linkedcare-DentalSaas-EN.pdf" class="btn-download btn-en" download>Download (EN)</a>
+                        <a href="pdf/Linkedcare-DentalSaas-CN.pdf" class="btn-download btn-en" download>下載 (中文)</a>
+                    </div>
+                </section>
+            </div>
+
         </div>
 
         <div id="portfolio" class="page-content">
@@ -264,6 +336,33 @@
                         <h3>AI-Edge Smart City Infrastructure</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Intelligent Water Network & Leak Detection Platform</p>
                     </a>
                 </div>
+
+                <div class="work-card">
+                    <a href="swdesign-kyligence.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="img-wrap"><img src="images/case05-hero.png"></div>
+                        <h3>Data Model Acceleration Platform</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Enterprise Intelligent Acceleration Platform & Multi-Cloud Connector</p>
+                    </a>
+                </div>
+
+                <div class="work-card">
+                    <a href="swdesign-linkedcare.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="img-wrap"><img src="images/case06-hero.png"></div>
+                        <h3>Dental Clinic SAAS Platform</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Full-Process Management of Dental Clinics、EMR Management & Inventory Management</p>
+                    </a>
+                </div>
+                <div class="work-card">
+                    <a href="swdesign-mozilla.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="img-wrap"><img src="images/case07-hero.png"></div>
+                        <h3>Browser Localization & Digital Content Portal</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Countering market share decline by building a content-driven portal and localized browser experience, generating new sustainable revenue streams.</p>
+                    </a>
+                </div>
+                <div class="work-card">
+                    <a href="swdesign-designlanguage.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="img-wrap"><img src="images/case08-hero.png"></div>
+                        <h3>Enterprise Design Language System</h3> <p style="font-size: 0.75rem; color:#888; text-transform:uppercase; letter-spacing: 1px;">Building a unified design source of truth from 0 to 1, bridging the gap between design and engineering with Atomic Design methodology.</p>
+                    </a>
+                </div>
+
             </div>
         </div>
 
@@ -275,7 +374,7 @@
                 
                 <div style="flex:1.2; min-width: 300px;">
                     <h2 style="font-size: 3rem; line-height: 1.1; margin-bottom: 20px;">Ready to start <br>the journey?</h2>
-                    <p style="margin-bottom: 40px; color: #666; font-size: 1.1rem; font-weight: 300;">
+                    <p style="margin-bottom: 40px; color: #666; font-size: 1.1rem; ">
                         Feel free to reach out for consulting services or project collaborations. <br>
                         You can also connect with me via LinkedIn.
                     </p>
@@ -293,7 +392,7 @@
                     </div>
 
                     <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px;">
-                        <p style="font-size: 0.8rem; color: #aaa; letter-spacing: 1px; line-height: 1.8;">
+                        <p style="font-size: 0.8rem; color: #333; letter-spacing: 1px; line-height: 1.8;">
                             Phone: +86-1575 080 2902<br>
                             WeChat: vitlai1121
                         </p>
